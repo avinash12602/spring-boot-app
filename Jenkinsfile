@@ -33,5 +33,10 @@ pipeline {
                 sh 'ansible-playbook -i /etc/ansible/hosts /etc/ansible/deploy.yml'
             }
         }
+        stage('Switch Traffic to Green') {
+            steps {
+                sh 'ansible-playbook -i /etc/ansible/hosts /etc/ansible/switch-lb.yml'
+            }
+        }
     }
 }
